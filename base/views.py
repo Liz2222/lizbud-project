@@ -1,11 +1,22 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpResponse
+from . models import Room
+
 # Create your views here.
 
 def home(request):
-    return render(request,'home.html')
+    rooms= Room.objects.all()
+
+    context={
+        'rooms':rooms
+    }
+    return render(request,'home.html',context)
 
 
-def room(request):
-   return render(request, 'room.html')
+def room(request,pk):
+    room= Room.objects.get(id=pk)
+    context={
+        'room':room
+    }
+    return render(request, 'room.html', context)
