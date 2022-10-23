@@ -11,7 +11,7 @@ def home(request):
     context={
         'rooms':rooms
     }
-    return render(request,'home.html',context)
+    return render(request,'base/home.html',context)
 
 
 def room(request,pk):
@@ -19,8 +19,8 @@ def room(request,pk):
     context={
         'room':room
     }
-    return render(request, 'room.html', context)
+    return render(request, 'base/room.html', context)
 
 def createRoom(request):
     context={}
-    return render(request,'room_form.html', context)
+    return render(request,'base/room_form.html', context)
