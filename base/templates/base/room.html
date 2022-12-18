@@ -3,5 +3,23 @@
 {%include 'navbar.html'%}
 <h1>{{room.name}}</h1>
 <p>{{room.description}}</p>
+{%for message in room_messages%}
+<div>
+    <small>@{{message.user}}   {{message.created|timesince}} ago </small>
+
+
+<p>{{message.body}}</p>
+<hr>
+{%endfor%}
+</div>
+<div>
+    {%if request.user.is_authenticated%}
+    <form method='POST' action=''>
+        {% csrf_token %}
+        <input name='body' type='text' placeholder='Write your message here...'>
+
+    </form>
+    {%endif%}
+</div>
 
 {%endblock%}
